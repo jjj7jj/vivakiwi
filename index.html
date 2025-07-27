@@ -1,0 +1,519 @@
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   VivaKiwi - Plataforma para inmigrantes y turistas hispanohablantes en Nueva Zelanda
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 min-h-screen flex flex-col">
+  <div class="flex flex-1 overflow-hidden">
+   <!-- Sidebar desktop -->
+   <aside class="hidden md:flex md:flex-col md:w-64 bg-white border-r border-gray-200">
+    <div class="flex items-center justify-center h-16 border-b border-gray-200 px-6">
+     <img alt="Logo VivaKiwi con letra V estilizada y kiwi sobre mapa de Nueva Zelanda" class="h-10 w-10" height="40" src="https://storage.googleapis.com/a1aa/image/5833700d-1e59-482b-b1b1-590fc80621ae.jpg" width="40"/>
+     <span class="ml-3 text-green-700 font-semibold text-xl">
+      VivaKiwi
+     </span>
+    </div>
+    <nav aria-label="Navegación lateral" class="flex flex-col flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+     <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-green-700 bg-green-100 font-semibold" href="#inicio" tabindex="0">
+      <i class="fas fa-home fa-lg">
+      </i>
+      <span>
+       Inicio
+      </span>
+     </a>
+     <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 transition" href="#mis-reservas" tabindex="0">
+      <i class="fas fa-calendar-check fa-lg">
+      </i>
+      <span>
+       Mis Reservas
+      </span>
+     </a>
+     <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 transition" href="#perfil" tabindex="0">
+      <i class="fas fa-user fa-lg">
+      </i>
+      <span>
+       Perfil
+      </span>
+     </a>
+     <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 transition" href="#mensajes" tabindex="0">
+      <i class="fas fa-comments fa-lg">
+      </i>
+      <span>
+       Mensajes
+      </span>
+     </a>
+     <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 transition" href="#configuracion" tabindex="0">
+      <i class="fas fa-cog fa-lg">
+      </i>
+      <span>
+       Configuración
+      </span>
+     </a>
+    </nav>
+    <div class="px-4 py-6 border-t border-gray-200">
+     <label class="block mb-2 font-semibold text-gray-700" for="select-idioma-desktop">
+      Idioma
+     </label>
+     <select aria-label="Seleccionar idioma" class="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-green-600 focus:ring-green-600" id="select-idioma-desktop" name="select-idioma-desktop">
+      <option selected="" value="es">
+       Español
+      </option>
+      <option value="en">
+       Inglés
+      </option>
+     </select>
+    </div>
+   </aside>
+   <!-- Contenido principal -->
+   <div class="flex flex-col flex-1 overflow-auto">
+    <header class="md:hidden bg-white border-b border-gray-200 flex items-center justify-between px-4 h-16 sticky top-0 z-30">
+     <button aria-label="Abrir menú" class="text-green-700 focus:outline-none focus:ring-2 focus:ring-green-600" id="boton-menu-movil">
+      <i class="fas fa-bars fa-lg">
+      </i>
+     </button>
+     <div class="flex items-center space-x-2">
+      <img alt="Logo VivaKiwi con letra V estilizada y kiwi sobre mapa de Nueva Zelanda" class="h-8 w-8" height="32" src="https://storage.googleapis.com/a1aa/image/5833700d-1e59-482b-b1b1-590fc80621ae.jpg" width="32"/>
+      <span class="text-green-700 font-semibold text-lg">
+       VivaKiwi
+      </span>
+     </div>
+     <select aria-label="Seleccionar idioma" class="rounded-md border border-gray-300 px-2 py-1 text-sm focus:border-green-600 focus:ring-green-600" id="select-idioma-movil" name="select-idioma-movil">
+      <option selected="" value="es">
+       Español
+      </option>
+      <option value="en">
+       Inglés
+      </option>
+     </select>
+    </header>
+    <!-- Menú lateral móvil -->
+    <nav aria-label="Navegación lateral móvil" aria-modal="true" class="fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-gray-200 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden" id="menu-lateral-movil" role="dialog" tabindex="-1">
+     <div class="flex items-center justify-between h-16 px-4 border-b border-gray-200">
+      <div class="flex items-center space-x-2">
+       <img alt="Logo VivaKiwi con letra V estilizada y kiwi sobre mapa de Nueva Zelanda" class="h-8 w-8" height="32" src="https://storage.googleapis.com/a1aa/image/5833700d-1e59-482b-b1b1-590fc80621ae.jpg" width="32"/>
+       <span class="text-green-700 font-semibold text-lg">
+        VivaKiwi
+       </span>
+      </div>
+      <button aria-label="Cerrar menú" class="text-green-700 focus:outline-none focus:ring-2 focus:ring-green-600" id="boton-cerrar-menu-movil">
+       <i class="fas fa-times fa-lg">
+       </i>
+      </button>
+     </div>
+     <nav class="flex flex-col px-4 py-6 space-y-2 overflow-y-auto h-full">
+      <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-green-700 bg-green-100 font-semibold" href="#inicio" tabindex="0">
+       <i class="fas fa-home fa-lg">
+       </i>
+       <span>
+        Inicio
+       </span>
+      </a>
+      <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 transition" href="#mis-reservas" tabindex="0">
+       <i class="fas fa-calendar-check fa-lg">
+       </i>
+       <span>
+        Mis Reservas
+       </span>
+      </a>
+      <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 transition" href="#perfil" tabindex="0">
+       <i class="fas fa-user fa-lg">
+       </i>
+       <span>
+        Perfil
+       </span>
+      </a>
+      <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 transition" href="#mensajes" tabindex="0">
+       <i class="fas fa-comments fa-lg">
+       </i>
+       <span>
+        Mensajes
+       </span>
+      </a>
+      <a class="flex items-center space-x-3 px-4 py-3 rounded-md text-gray-700 hover:bg-green-100 hover:text-green-700 transition" href="#configuracion" tabindex="0">
+       <i class="fas fa-cog fa-lg">
+       </i>
+       <span>
+        Configuración
+       </span>
+      </a>
+      <div class="mt-6">
+       <label class="block mb-2 font-semibold text-gray-700" for="select-idioma-menu-movil">
+        Idioma
+       </label>
+       <select aria-label="Seleccionar idioma" class="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-green-600 focus:ring-green-600" id="select-idioma-menu-movil" name="select-idioma-menu-movil">
+        <option selected="" value="es">
+         Español
+        </option>
+        <option value="en">
+         Inglés
+        </option>
+       </select>
+      </div>
+     </nav>
+    </nav>
+    <!-- Overlay para menú móvil -->
+    <div aria-hidden="true" class="fixed inset-0 bg-black bg-opacity-30 hidden z-30" id="overlay-menu-movil" tabindex="-1">
+    </div>
+    <!-- Contenido principal -->
+    <main class="flex-1 p-6 overflow-auto" id="inicio" tabindex="0">
+     <h1 class="text-3xl font-extrabold text-green-700 mb-6">
+      Bienvenido a VivaKiwi
+     </h1>
+     <p class="text-gray-700 max-w-3xl mb-8">
+      Plataforma que conecta a inmigrantes y turistas hispanohablantes con proveedores de servicios confiables en Nueva Zelanda. Usa el menú para navegar por tus reservas, perfil, mensajes y configuración.
+     </p>
+     <section aria-labelledby="servicios-titulo" class="max-w-4xl">
+      <h2 class="text-2xl font-semibold text-green-600 mb-4" id="servicios-titulo">
+       Servicios Destacados
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+       <a aria-label="Reservar servicio de recepción en aeropuerto 24/7" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow hover:shadow-lg transition" href="#reservar-recepcion-aeropuerto">
+        <img alt="Icono de recepción en aeropuerto con coche y maletas" class="h-12 w-12" height="48" src="https://storage.googleapis.com/a1aa/image/6574b99d-d097-4e46-3c05-f97782c25888.jpg" width="48"/>
+        <span class="font-semibold text-gray-800">
+         Recepción en Aeropuerto (24/7)
+        </span>
+       </a>
+       <a aria-label="Reservar servicio de transporte privado" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow hover:shadow-lg transition" href="#reservar-transporte-privado">
+        <img alt="Icono de transporte privado con silueta de coche" class="h-12 w-12" height="48" src="https://storage.googleapis.com/a1aa/image/4d220717-b0cb-42b6-4fd4-2468f6b12761.jpg" width="48"/>
+        <span class="font-semibold text-gray-800">
+         Transporte Privado/Local
+        </span>
+       </a>
+       <a aria-label="Reservar tour por Auckland con guía en español" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow hover:shadow-lg transition" href="#reservar-tour-auckland">
+        <img alt="Icono de guía turístico con bandera" class="h-12 w-12" height="48" src="https://storage.googleapis.com/a1aa/image/677331db-b36b-4bb7-eb2a-f5c6982adc48.jpg" width="48"/>
+        <span class="font-semibold text-gray-800">
+         Tour por Auckland (en español)
+        </span>
+       </a>
+       <a aria-label="Reservar visita a Kiwi Farm" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow hover:shadow-lg transition" href="#reservar-kiwi-farm">
+        <img alt="Icono de kiwi y granja" class="h-12 w-12" height="48" src="https://storage.googleapis.com/a1aa/image/9e9b5ee2-6ebf-4959-a210-0d794f4a0f71.jpg" width="48"/>
+        <span class="font-semibold text-gray-800">
+         Visita a Kiwi Farm
+        </span>
+       </a>
+       <a aria-label="Reservar apoyo con trámites básicos" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow hover:shadow-lg transition" href="#reservar-tramites">
+        <img alt="Icono de documentos y trámites" class="h-12 w-12" height="48" src="https://storage.googleapis.com/a1aa/image/6ff96bba-2903-4e30-3619-1f074ab4da12.jpg" width="48"/>
+        <span class="font-semibold text-gray-800">
+         Apoyo con Trámites Básicos
+        </span>
+       </a>
+       <a aria-label="Reservar ayuda con arriendo inicial" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow hover:shadow-lg transition" href="#reservar-arriendo">
+        <img alt="Icono de casa y contrato" class="h-12 w-12" height="48" src="https://storage.googleapis.com/a1aa/image/39bed812-757a-4ec3-719c-b08625f4c132.jpg" width="48"/>
+        <span class="font-semibold text-gray-800">
+         Ayuda con Arriendo Inicial
+        </span>
+       </a>
+       <a aria-label="Conexión con iglesia o comunidad latina" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow hover:shadow-lg transition col-span-full sm:col-span-2" href="#conexion-comunidad">
+        <img alt="Icono de iglesia y comunidad latina" class="h-12 w-12" height="48" src="https://storage.googleapis.com/a1aa/image/b2f89744-7457-460d-df64-2308566b9fae.jpg" width="48"/>
+        <span class="font-semibold text-gray-800">
+         Conexión con Iglesia o Comunidad Latina
+        </span>
+       </a>
+      </div>
+     </section>
+     <section aria-labelledby="flujo-uso-titulo" class="max-w-3xl mt-12">
+      <h2 class="text-2xl font-semibold text-green-600 mb-4" id="flujo-uso-titulo">
+       Flujo de Uso para Clientes
+      </h2>
+      <ol class="list-decimal list-inside space-y-3 text-gray-700">
+       <li>
+        Entra a
+        <a class="text-green-700 font-semibold hover:underline" href="https://vivakiwi.nz" rel="noopener noreferrer" target="_blank">
+         VivaKiwi.nz
+        </a>
+       </li>
+       <li>
+        Elige idioma: 🇪🇸 Español o 🇬🇧 Inglés
+       </li>
+       <li>
+        Crea cuenta con email o WhatsApp
+       </li>
+       <li>
+        Selecciona servicio (ej. Recogida + Tour)
+       </li>
+       <li>
+        Paga online (Stripe, tarjeta)
+       </li>
+       <li>
+        Recibe confirmación y contacto del proveedor
+       </li>
+       <li>
+        Deja valoración después del servicio
+       </li>
+      </ol>
+     </section>
+     <section aria-labelledby="modelo-negocio-titulo" class="max-w-3xl mt-12">
+      <h2 class="text-2xl font-semibold text-green-600 mb-4" id="modelo-negocio-titulo">
+       Modelo de Negocio
+      </h2>
+      <ul class="list-disc list-inside space-y-3 text-gray-700">
+       <li>
+        Comisión por cada servicio reservado (10-20%)
+       </li>
+       <li>
+        Publicidad local o membresías premium para proveedores
+       </li>
+      </ul>
+     </section>
+     <section aria-labelledby="estructura-plataforma-titulo" class="max-w-3xl mt-12">
+      <h2 class="text-2xl font-semibold text-green-600 mb-4" id="estructura-plataforma-titulo">
+       Estructura de la Plataforma
+      </h2>
+      <div class="space-y-6">
+       <div>
+        <h3 class="text-xl font-semibold text-green-700 mb-2">
+         Usuarios
+        </h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+         <li>
+          Reservan servicios fácilmente desde móvil.
+         </li>
+         <li>
+          Perfil básico: nombre, idioma, país, fecha de llegada.
+         </li>
+         <li>
+          Pago online seguro y sistema de calificaciones.
+         </li>
+        </ul>
+       </div>
+       <div>
+        <h3 class="text-xl font-semibold text-green-700 mb-2">
+         Proveedores
+        </h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+         <li>
+          Registro con verificación de identidad.
+         </li>
+         <li>
+          Perfil con servicios, tarifas y disponibilidad.
+         </li>
+         <li>
+          Acceso a app o panel para aceptar reservas.
+         </li>
+        </ul>
+       </div>
+       <div>
+        <h3 class="text-xl font-semibold text-green-700 mb-2">
+         Admin (Tú)
+        </h3>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+         <li>
+          Panel para gestionar usuarios y proveedores.
+         </li>
+         <li>
+          Control de comisiones y pagos automáticos.
+         </li>
+         <li>
+          Control de reputación y reportes.
+         </li>
+        </ul>
+       </div>
+      </div>
+     </section>
+     <section aria-labelledby="tecnologia-titulo" class="max-w-3xl mt-12">
+      <h2 class="text-2xl font-semibold text-green-600 mb-4" id="tecnologia-titulo">
+       Tecnología Recomendada
+      </h2>
+      <div class="space-y-6 text-gray-700">
+       <div>
+        <h3 class="font-semibold text-green-700 mb-1">
+         Fase 1: MVP (Producto mínimo viable)
+        </h3>
+        <ul class="list-disc list-inside space-y-1">
+         <li>
+          Sitio web WordPress con plugins:
+          <ul class="list-disc list-inside ml-5 space-y-1">
+           <li>
+            WooCommerce (pagos)
+           </li>
+           <li>
+            Bookly (reservas)
+           </li>
+           <li>
+            User Registration / WP Job Manager (registro proveedores)
+           </li>
+          </ul>
+         </li>
+         <li>
+          Dominio personalizado: vivakiwi.nz o vivakiwi.com
+         </li>
+         <li>
+          Diseño adaptable a móvil (responsive)
+         </li>
+        </ul>
+       </div>
+       <div>
+        <h3 class="font-semibold text-green-700 mb-1">
+         Fase 2: Plataforma tipo app (si crece)
+        </h3>
+        <ul class="list-disc list-inside space-y-1">
+         <li>
+          App móvil en Flutter o React Native
+         </li>
+         <li>
+          Integrar mapas (Google Maps), geolocalización y notificaciones push
+         </li>
+         <li>
+          Conectar con Stripe para pagos seguros y depósitos automáticos
+         </li>
+        </ul>
+       </div>
+      </div>
+     </section>
+     <section aria-labelledby="marketing-titulo" class="max-w-3xl mt-12">
+      <h2 class="text-2xl font-semibold text-green-600 mb-4" id="marketing-titulo">
+       Marketing y Expansión
+      </h2>
+      <ul class="list-disc list-inside space-y-3 text-gray-700">
+       <li>
+        Red de confianza: Usa tu iglesia latina como red inicial de usuarios y proveedores.
+       </li>
+       <li>
+        Redes sociales: Instagram y TikTok con testimonios reales.
+       </li>
+       <li>
+        Convenios con dueños de Kiwi Farms para experiencias exclusivas.
+       </li>
+       <li>
+        Blog con consejos útiles para inmigrantes → mejora SEO.
+       </li>
+      </ul>
+     </section>
+     <section aria-labelledby="inversion-titulo" class="max-w-3xl mt-12 mb-20">
+      <h2 class="text-2xl font-semibold text-green-600 mb-4" id="inversion-titulo">
+       Inversión Estimada
+      </h2>
+      <table class="w-full text-left border-collapse border border-gray-300">
+       <thead>
+        <tr class="bg-green-100 text-green-800 font-semibold">
+         <th class="border border-gray-300 px-4 py-2">
+          Etapa
+         </th>
+         <th class="border border-gray-300 px-4 py-2">
+          Costo Estimado (NZD)
+         </th>
+         <th class="border border-gray-300 px-4 py-2">
+          Detalles
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr class="odd:bg-white even:bg-green-50">
+         <td class="border border-gray-300 px-4 py-2">
+          Página en WordPress
+         </td>
+         <td class="border border-gray-300 px-4 py-2">
+          $300 - $700
+         </td>
+         <td class="border border-gray-300 px-4 py-2">
+          Dominio, hosting, plugins premium, diseño
+         </td>
+        </tr>
+        <tr class="odd:bg-white even:bg-green-50">
+         <td class="border border-gray-300 px-4 py-2">
+          Promoción inicial
+         </td>
+         <td class="border border-gray-300 px-4 py-2">
+          $200 - $500
+         </td>
+         <td class="border border-gray-300 px-4 py-2">
+          Flyers, redes sociales
+         </td>
+        </tr>
+        <tr class="odd:bg-white even:bg-green-50">
+         <td class="border border-gray-300 px-4 py-2">
+          Desarrollo App (futuro)
+         </td>
+         <td class="border border-gray-300 px-4 py-2">
+          $4,000 - $10,000+
+         </td>
+         <td class="border border-gray-300 px-4 py-2">
+          App a medida (si creces mucho)
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </section>
+    </main>
+    <!-- Menú inferior móvil -->
+    <nav aria-label="Navegación inferior" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex md:hidden justify-around h-16 z-40">
+     <a aria-current="page" class="flex flex-col items-center justify-center text-green-700 font-semibold" href="#inicio" tabindex="0">
+      <i class="fas fa-home fa-lg">
+      </i>
+      <span class="text-xs mt-1">
+       Inicio
+      </span>
+     </a>
+     <a class="flex flex-col items-center justify-center text-gray-600 hover:text-green-700 transition" href="#mis-reservas" tabindex="0">
+      <i class="fas fa-calendar-check fa-lg">
+      </i>
+      <span class="text-xs mt-1">
+       Mis Reservas
+      </span>
+     </a>
+     <a class="flex flex-col items-center justify-center text-gray-600 hover:text-green-700 transition" href="#perfil" tabindex="0">
+      <i class="fas fa-user fa-lg">
+      </i>
+      <span class="text-xs mt-1">
+       Perfil
+      </span>
+     </a>
+     <a class="flex flex-col items-center justify-center text-gray-600 hover:text-green-700 transition" href="#mensajes" tabindex="0">
+      <i class="fas fa-comments fa-lg">
+      </i>
+      <span class="text-xs mt-1">
+       Mensajes
+      </span>
+     </a>
+     <a class="flex flex-col items-center justify-center text-gray-600 hover:text-green-700 transition" href="#configuracion" tabindex="0">
+      <i class="fas fa-cog fa-lg">
+      </i>
+      <span class="text-xs mt-1">
+       Configuración
+      </span>
+     </a>
+    </nav>
+   </div>
+  </div>
+  <script>
+   const botonMenuMovil = document.getElementById('boton-menu-movil');
+    const menuLateralMovil = document.getElementById('menu-lateral-movil');
+    const overlayMenuMovil = document.getElementById('overlay-menu-movil');
+    const botonCerrarMenuMovil = document.getElementById('boton-cerrar-menu-movil');
+
+    function abrirMenuMovil() {
+      menuLateralMovil.classList.remove('-translate-x-full');
+      overlayMenuMovil.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function cerrarMenuMovil() {
+      menuLateralMovil.classList.add('-translate-x-full');
+      overlayMenuMovil.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    botonMenuMovil.addEventListener('click', abrirMenuMovil);
+    botonCerrarMenuMovil.addEventListener('click', cerrarMenuMovil);
+    overlayMenuMovil.addEventListener('click', cerrarMenuMovil);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menuLateralMovil.classList.contains('-translate-x-full')) {
+        cerrarMenuMovil();
+      }
+    });
+  </script>
+ </body>
+</html>
